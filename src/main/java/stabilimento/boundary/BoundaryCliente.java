@@ -56,7 +56,6 @@ public class BoundaryCliente extends JFrame {
         mostraFormRicerca();
         setVisible(true);
     }
-
     public void mostraFormRicerca() {
         JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
@@ -65,11 +64,11 @@ public class BoundaryCliente extends JFrame {
         formPanel.setBorder(BorderFactory.createTitledBorder("Ricerca Disponibilità e Scelta Servizi"));
 
         txtIdCliente = new JTextField("C102");
-        txtDataInizio = new JTextField("2026-08-01");
-        txtDataFine = new JTextField("2026-08-03");
+        txtDataInizio = new JTextField("2026-08-11");
+        txtDataFine = new JTextField("2026-08-12");
         txtOra = new JTextField("09:00");
         cmbPostazioni = new JComboBox<>();
-        txtQtaLettini = new JTextField("0");
+        txtQtaLettini = new JTextField("1");
         txtQtaCabina = new JTextField("0");
 
         formPanel.add(new JLabel("ID Cliente Autenticato (*):"));
@@ -87,27 +86,36 @@ public class BoundaryCliente extends JFrame {
         formPanel.add(new JLabel("Quantità Cabina Privata (ID: S02):"));
         formPanel.add(txtQtaCabina);
 
-        JPanel actionsPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 5));
+
+        JPanel actionsContainer = new JPanel(new GridLayout(2, 1, 5, 5));
+
+        JPanel riga1Azioni = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
         btnCerca = new JButton("1. Cerca Disponibilità");
         btnSelezionaPostazione = new JButton("2. Seleziona Postazione");
         btnAggiungiServizi = new JButton("3a. Aggiungi Servizi");
         btnSenzaServizi = new JButton("3b. Prosegui Senza Servizi");
-        btnConferma = new JButton("4. Conferma Prenotazione");
-        btnAnnulla = new JButton("Annulla Richiesta");
-        lblRiepilogoImporto = new JLabel("Importo: € 0,00");
-        lblRiepilogoImporto.setFont(new Font("SansSerif", Font.BOLD, 13));
+        riga1Azioni.add(btnCerca);
+        riga1Azioni.add(btnSelezionaPostazione);
+        riga1Azioni.add(btnAggiungiServizi);
+        riga1Azioni.add(btnSenzaServizi);
 
-        actionsPanel.add(btnCerca);
-        actionsPanel.add(btnSelezionaPostazione);
-        actionsPanel.add(btnAggiungiServizi);
-        actionsPanel.add(btnSenzaServizi);
-        actionsPanel.add(btnConferma);
-        actionsPanel.add(btnAnnulla);
-        actionsPanel.add(lblRiepilogoImporto);
+        JPanel riga2Azioni = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
+        btnConferma = new JButton("4. Conferma Prenotazione");
+        btnConferma.setBackground(new Color(220, 245, 220));
+        btnAnnulla = new JButton("Annulla Procedura");
+        lblRiepilogoImporto = new JLabel("Importo Corrente: € 0,00");
+        lblRiepilogoImporto.setFont(new Font("SansSerif", Font.BOLD, 14));
+        lblRiepilogoImporto.setForeground(new Color(0, 102, 204));
+        riga2Azioni.add(btnConferma);
+        riga2Azioni.add(btnAnnulla);
+        riga2Azioni.add(lblRiepilogoImporto);
+
+        actionsContainer.add(riga1Azioni);
+        actionsContainer.add(riga2Azioni);
 
         JPanel northContainer = new JPanel(new BorderLayout(5, 5));
         northContainer.add(formPanel, BorderLayout.CENTER);
-        northContainer.add(actionsPanel, BorderLayout.SOUTH);
+        northContainer.add(actionsContainer, BorderLayout.SOUTH);
 
         String[] columns = {"ID Cliente", "Ombrellone", "Data Inizio", "Data Fine", "Servizi Extra", "Importo Complessivo", "Stato"};
         tableModel = new DefaultTableModel(columns, 0);
