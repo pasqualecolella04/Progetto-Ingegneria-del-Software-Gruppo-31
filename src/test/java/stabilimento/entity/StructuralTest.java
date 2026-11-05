@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 public class StructuralTest {
 
     private StabilimentoBalneare stabilimento;
@@ -30,9 +31,7 @@ public class StructuralTest {
     }
 
     //TC_1: Cammino 1-2-17-19-20
-
     @Test
-    @DisplayName("TC_1: Cammino 1-2-17-19-20 - listaPrenotazioni == null")
     void testTC1_ListaNull() {
         ReportDTO report = stabilimento.calcolaTotaliEIndiciAffluenza(null);
 
@@ -47,9 +46,7 @@ public class StructuralTest {
     }
 
     //TC_2: Cammino 1-2-3-17-19-20
-
     @Test
-    @DisplayName("TC_2: Cammino 1-2-3-17-19-20 - listaPrenotazioni vuota")
     void testTC2_ListaVuota() {
         List<Prenotazione> listaVuota = new ArrayList<>();
 
@@ -64,9 +61,7 @@ public class StructuralTest {
     }
 
     // TC_3: Cammino 1-2-3-4-5-4-17-19-20
-
     @Test
-    @DisplayName("TC_3: Cammino 1-2-3-4-5-4-17-19-20 - Prenotazione Annullata")
     void testTC3_PrenotazioneAnnullata() {
         Cliente c = new Cliente("Pasquale", "Colella", "pasquale@unina.it", "3331234567", "pwd");
         c.setIdUtente("C01");
@@ -86,9 +81,7 @@ public class StructuralTest {
     }
 
     //TC_4: Cammino 1-2-3-4-5-6-7-9-10-11-13-14-16-4-17-18-20
-
     @Test
-    @DisplayName("TC_4: Cammino 1-2-3-4-5-6-7-9-10-11-13-14-16-4-17-18-20 - Valida senza servizi, Cliente e Postazione presenti")
     void testTC4_ValidaSenzaServizi() {
         Cliente c = new Cliente("Pasquale", "Colella", "pasquale@unina.it", "3331234567", "pwd");
         c.setIdUtente("C01");
@@ -114,9 +107,7 @@ public class StructuralTest {
     }
 
     // TC_5: Cammino 1-2-3-4-5-6-7-8-7-9-10-11-13-14-16-4-17-18-20
-
     @Test
-    @DisplayName("TC_5: Cammino 1-2-3-4-5-6-7-8-7-9-10-11-13-14-16-4-17-18-20 - Valida con servizi")
     void testTC5_ValidaConServizi() {
         Cliente c = new Cliente("Pasquale", "Colella", "pasquale@unina.it", "3331234567", "pwd");
         c.setIdUtente("C01");
@@ -142,9 +133,7 @@ public class StructuralTest {
     }
 
     //TC_6: Cammino 1-2-3-4-5-6-7-9-10-12-13-14-16-4-17-18-20
-
     @Test
-    @DisplayName("TC_6: Cammino 1-2-3-4-5-6-7-9-10-12-13-14-16-4-17-18-20 - Cliente NULL, Postazione presente")
     void testTC6_ClienteNullPostazionePresente() {
         Postazione pos = new Postazione("POS-02", 2, 2, "Seconda Fila");
 
@@ -166,9 +155,7 @@ public class StructuralTest {
     }
 
     // TC_7: Cammino 1-2-3-4-5-6-7-9-10-11-13-15-16-4-17-18-20
-
     @Test
-    @DisplayName("TC_7: Cammino 1-2-3-4-5-6-7-9-10-11-13-15-16-4-17-18-20 - Cliente presente, Postazione NULL")
     void testTC7_ClientePresentePostazioneNull() {
         Cliente c = new Cliente("Antonio", "Borrelli", "antonio@unina.it", "3339876543", "pwd");
         c.setIdUtente("C02");
@@ -191,9 +178,7 @@ public class StructuralTest {
     }
 
     // TC_8: Cammino 1-2-3-4-5-4-5-6-7-8-7-9-10-11-13-14-16-4-17-18-20
-
     @Test
-    @DisplayName("TC_8: Cammino 1-2-3-4-5-4-5-6-7-8-7-9-10-11-13-14-16-4-17-18-20 - Iterazione multipla mista")
     void testTC8_ListaMistaIterazioniMultiple() {
         Cliente c1 = new Cliente("Pasquale", "Colella", "pasquale@unina.it", "3331234567", "pwd");
         c1.setIdUtente("C01");
@@ -222,4 +207,3 @@ public class StructuralTest {
         assertEquals(2, report.getRigheDettaglio().size());
     }
 }
-
