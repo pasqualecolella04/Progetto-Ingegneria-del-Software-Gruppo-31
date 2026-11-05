@@ -27,12 +27,12 @@ public class StructuralTest {
         stabilimento = new StabilimentoBalneare("STAB-01", "Lido Gruppo 31", "Via Marina 31, Napoli");
         sdf = new SimpleDateFormat("yyyy-MM-dd");
         dataInizio = sdf.parse("2026-08-01");
-        dataFine = sdf.parse("2026-08-03"); // 3 giorni inclusivi
+        dataFine = sdf.parse("2026-08-03");
     }
 
     //TC_1: Cammino 1-2-17-19-20
     @Test
-    void testTC1_ListaNull() {
+    void testTC1() {
         ReportDTO report = stabilimento.calcolaTotaliEIndiciAffluenza(null);
 
         assertNotNull(report);
@@ -47,7 +47,7 @@ public class StructuralTest {
 
     //TC_2: Cammino 1-2-3-17-19-20
     @Test
-    void testTC2_ListaVuota() {
+    void testTC2() {
         List<Prenotazione> listaVuota = new ArrayList<>();
 
         ReportDTO report = stabilimento.calcolaTotaliEIndiciAffluenza(listaVuota);
@@ -62,7 +62,7 @@ public class StructuralTest {
 
     // TC_3: Cammino 1-2-3-4-5-4-17-19-20
     @Test
-    void testTC3_PrenotazioneAnnullata() {
+    void testTC3() {
         Cliente c = new Cliente("Pasquale", "Colella", "pasquale@unina.it", "3331234567", "pwd");
         c.setIdUtente("C01");
         Postazione pos = new Postazione("POS-01", 1, 1, "Prima Fila");
@@ -82,7 +82,7 @@ public class StructuralTest {
 
     //TC_4: Cammino 1-2-3-4-5-6-7-9-10-11-13-14-16-4-17-18-20
     @Test
-    void testTC4_ValidaSenzaServizi() {
+    void testTC4() {
         Cliente c = new Cliente("Pasquale", "Colella", "pasquale@unina.it", "3331234567", "pwd");
         c.setIdUtente("C01");
         Postazione pos = new Postazione("POS-01", 1, 1, "Prima Fila");
@@ -108,7 +108,7 @@ public class StructuralTest {
 
     // TC_5: Cammino 1-2-3-4-5-6-7-8-7-9-10-11-13-14-16-4-17-18-20
     @Test
-    void testTC5_ValidaConServizi() {
+    void testTC5() {
         Cliente c = new Cliente("Pasquale", "Colella", "pasquale@unina.it", "3331234567", "pwd");
         c.setIdUtente("C01");
         Postazione pos = new Postazione("POS-01", 1, 1, "Prima Fila");
@@ -134,7 +134,7 @@ public class StructuralTest {
 
     //TC_6: Cammino 1-2-3-4-5-6-7-9-10-12-13-14-16-4-17-18-20
     @Test
-    void testTC6_ClienteNullPostazionePresente() {
+    void testTC6() {
         Postazione pos = new Postazione("POS-02", 2, 2, "Seconda Fila");
 
         Prenotazione pSenzaCliente = new Prenotazione(null, pos, dataInizio, dataFine, "In Attesa di Conferma");
@@ -156,7 +156,7 @@ public class StructuralTest {
 
     // TC_7: Cammino 1-2-3-4-5-6-7-9-10-11-13-15-16-4-17-18-20
     @Test
-    void testTC7_ClientePresentePostazioneNull() {
+    void testTC7() {
         Cliente c = new Cliente("Antonio", "Borrelli", "antonio@unina.it", "3339876543", "pwd");
         c.setIdUtente("C02");
 
@@ -179,7 +179,7 @@ public class StructuralTest {
 
     // TC_8: Cammino 1-2-3-4-5-4-5-6-7-8-7-9-10-11-13-14-16-4-17-18-20
     @Test
-    void testTC8_ListaMistaIterazioniMultiple() {
+    void testTC8() {
         Cliente c1 = new Cliente("Pasquale", "Colella", "pasquale@unina.it", "3331234567", "pwd");
         c1.setIdUtente("C01");
         Cliente c2 = new Cliente("Antonio", "Borrelli", "antonio@unina.it", "3339876543", "pwd");
